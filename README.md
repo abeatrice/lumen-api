@@ -1,23 +1,22 @@
 # Lumen API
 
-#### local dev
-get source
+#### Get Source
     $ git clone https://github.com/abeatrice/lumen-api.git
     $ cd lumen-api
 
-install dependencies
+#### Install Dependencies
     $ composer install
 
-copy env file
+#### Copy env file
     $ cp .env.example .env
 
-create database in mysql
+#### Create database in mysql
     $ mysql -u root -p
     $ create database lumen;
     $ exit
 
-migrate tables
+#### Migrate tables
     $ php artisan migrate
 
-serve the application
+#### Serve the application
     $ php -S localhost:8000 -t public

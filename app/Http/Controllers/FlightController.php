@@ -6,6 +6,17 @@ use App\Flight;
 
 class FlightController extends Controller
 {
+
+    /**
+     * Create Controller
+     * 
+     * @return void
+     */
+    public function __construct() 
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Get all flights
      *
@@ -13,17 +24,22 @@ class FlightController extends Controller
      */
     public function index()
     {
-        $flights = Flight::all();
-
-        return $flights;
+        return response()->json(['data' => Flight::all()], 201);
     }
 
     public function show($flight)
     {
-        return [
-            'id' => $flight,
-            'to' => 'lax',
-            'from' => 'bur'
-        ];
+        try {
+
+            $flight = Flight::findOrFail($flight);
+
+            return response()->json(['data' => $flight], 200);
+
+        } catch (\Exception $e) {
+
+            return response()->json(['message' => 'flight not found'], 404);
+
+        }
+
     }
 }
