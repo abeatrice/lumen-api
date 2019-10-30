@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Flight;
 
-class DatabaseSeeder extends Seeder
+class FlightsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            FlightsTableSeeder::class,
-            UsersTableSeeder::class,
-        ]);
+        factory(App\Flight::class, 50)->create();
     }
 }

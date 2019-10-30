@@ -15,8 +15,16 @@
     $ create database lumen;
     $ exit
 
-#### Migrate tables
-    $ php artisan migrate
+#### Migrate and seed tables
+    $ php artisan migrate:fresh --seed
 
 #### Serve the application
-    $ php -S localhost:8000 -t public
+    $ php -S localhost:8000 -t public 
+
+#### Postman collection
+    open postman
+    select import
+    select lumen-api.postman_collection.json
+    login user - generates bearer token
+    get flights - returns all flights, bearer token required
+    get flight - returns one flight, token required
