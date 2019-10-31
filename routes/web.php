@@ -26,6 +26,10 @@ $router->group(['prefix' => 'api/user'], function() use ($router) {
     $router->post('/register', 'AuthController@register');
     $router->post('/login', 'AuthController@login');
 
-    $router->get('/{id}/flights', 'FlightUserController@index');
+    $router->get('/{id}/flights', [
+        'middleware' => ['auth', 'isOwner:id'],
+        'uses' => 'FlightUserController@index'
+    ]);
+
     $router->post('/flights', 'FlightUserController@store');
 });
