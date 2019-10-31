@@ -15,11 +15,17 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-//API group
-$router->group(['prefix' => 'api'], function() use ($router) {
-    $router->post('/user/register', 'AuthController@register');
-    $router->post('/user/login', 'AuthController@login');
+//Flights group
+$router->group(['prefix' => 'api/flights'], function() use ($router) {
+    $router->get('/', 'FlightController@index');
+    $router->get('/{flight}', 'FlightController@show');
+});
 
-    $router->get('flights', 'FlightController@index');
-    $router->get('flights/{flight}', 'FlightController@show');
+//User group
+$router->group(['prefix' => 'api/user'], function() use ($router) {
+    $router->post('/register', 'AuthController@register');
+    $router->post('/login', 'AuthController@login');
+
+    $router->get('/{id}/flights', 'FlightUserController@index');
+    $router->post('/flights', 'FlightUserController@store');
 });

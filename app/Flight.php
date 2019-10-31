@@ -19,4 +19,9 @@ class Flight extends Model implements AuthenticatableContract, AuthorizableContr
      */
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
 }

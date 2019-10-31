@@ -50,4 +50,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return [];
     }
+
+    /**
+     * get users flights
+     *
+     * @return QueryBuilder
+     */
+    public function flights()
+    {
+        return $this->belongsToMany('App\Flight');
+    }
 }
