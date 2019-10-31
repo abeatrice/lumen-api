@@ -28,3 +28,6 @@
     login user - generates bearer token
     get flights - returns all flights, bearer token required
     get flight - returns one flight, token required
+
+#### Run Tests
+    $ ./vendor/bin/phpunit

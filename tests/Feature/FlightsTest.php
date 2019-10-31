@@ -10,11 +10,11 @@ class FlightsTest extends TestCase
     /** @test */
     public function unauth_user_can_not_get_flights()
     {
-        //unauthorized user get flights request
+        //when unauthorized user gets flights
         $this->get('/api/flights');
         
         //expect 401 unauthorized response
-        $this->assertEquals(401, $this->response->status());
+        $this->assertResponseStatus(401);
     }
 
     /** @test */
@@ -23,10 +23,16 @@ class FlightsTest extends TestCase
         //given that db has flights
         $flights = factory('App\Flight', 3)->create();
 
-        //auth user get flights request
+        //when auth user gets flights
         $this->actingAs($this->authUser())
             ->get('/api/flights');
 
         //expect json flights response
+        $this->seeJson([
+            'data' => $flights->toArray()
+        ]);
+
+        //and 200 status
+        $this->assertResponseStatus(200);
     }
 }

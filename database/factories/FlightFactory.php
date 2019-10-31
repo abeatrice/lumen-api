@@ -15,6 +15,6 @@ $factory->define(App\Flight::class, function (Faker\Generator $faker) {
     return [
         'origin' => $faker->randomElement(['LAX', 'SEA', 'PDX', 'BUR']),
         'destination' => $faker->randomElement(['LAX', 'SEA', 'PDX', 'BUR']),
-        'departs' => $faker->dateTimeThisMonth
+        'departs' => $faker->dateTimeThisMonth->format('Y-m-d h:i:s')
     ];
 });
