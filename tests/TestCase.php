@@ -11,4 +11,14 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     {
         return require __DIR__.'/../bootstrap/app.php';
     }
+
+    /** 
+     * Create authorized user
+     * 
+     * @return User
+     */
+    public function authUser()
+    {
+        return factory('App\User')->make();
+    }
 }
