@@ -24,10 +24,19 @@
 #### Postman collection
     open postman
     select import
-    select lumen-api.postman_collection.json
-    login user - generates bearer token
-    get flights - returns all flights, bearer token required
-    get flight - returns one flight, token required
+    select lumen-api.postman_collection.json from project root
 
 #### Run Tests
     $ ./vendor/bin/phpunit
+
+
+#### API
+
+| Verb      | Endpoint                      | Description                           |
+|:--------- |:----------------------------- |:------------------------------------- |
+| POST      | /api/user/register            | register a new user                   |
+| POST      | /api/user/login               | login a user & get a Bearer Token     |
+| POST      | /api/user/flights             | assign flight to user                 |
+| GET       | /api/user/{user_id}/flights   | get user's flights                    |
+| GET       | /api/flights                  | get all flights                       |
+| GET       | /api/{flight_id}              | get one flight by id                  |
