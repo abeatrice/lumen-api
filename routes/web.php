@@ -23,9 +23,9 @@ $router->group(['prefix' => 'api/flights'], function() use ($router) {
 
 //User group
 $router->group(['prefix' => 'api/user'], function() use ($router) {
-    $router->post('/register', 'AuthController@register');
-    $router->post('/login', 'AuthController@login');
+    $router->post('/register', 'RegisterUserController@store');
+    $router->post('/login', 'LoginUserController@store');
 
-    $router->get('/{id}/flights', 'FlightUserController@index');
-    $router->post('/flights', 'FlightUserController@store');
+    $router->get('/{userId}/flights', 'FlightUserController@index');
+    $router->post('/{userId}/flights', 'FlightUserController@store');
 });
