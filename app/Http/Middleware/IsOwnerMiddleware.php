@@ -13,9 +13,9 @@ class IsOwnerMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $parameter)
+    public function handle($request, Closure $next, $userId)
     {
-        if($request->route($parameter) != $request->user()->id) {
+        if($request->route($userId) != $request->user()->id) {
             return response('Unauthorized.', 401);
         }
 

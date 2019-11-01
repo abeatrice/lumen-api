@@ -35,4 +35,12 @@ class FlightsTest extends TestCase
         //and 200 status
         $this->assertResponseStatus(200);
     }
+
+    //auth user cannot get another user's flights
+
+    //auth user can get own flights
+
+    //auth user cannot create flight for other user
+
+    //auth user can create own flight
 }

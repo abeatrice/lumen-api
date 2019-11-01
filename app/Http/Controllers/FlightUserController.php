@@ -16,7 +16,8 @@ class FlightUserController extends Controller
      */
     public function __construct()
     {
-        //middleware user_id == auth user id 
+        $this->middleware('auth');
+        $this->middleware('isOwner:userId');
     }
 
     /**
@@ -54,10 +55,8 @@ class FlightUserController extends Controller
         try {
 
             $flight = Flight::findOrFail($request->flight_id);
-            
-            $user = User::findOrFail($request->user_id);
 
-            $user->flights()->save($flight);
+            $request->user()->flights()->save($flight);
 
             return response()->json(['message' => 'user flight created'], 201);
 
