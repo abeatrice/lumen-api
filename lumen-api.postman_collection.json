@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "28665384-3a73-43b7-a8cb-4438882cc28a",
-		"name": "lumen-api",
+		"_postman_id": "5a751191-43cd-4e08-bd70-e9dd0de54a27",
+		"name": "lumen-api copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -82,10 +82,6 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "localhost:8000/api/flights",
 					"host": [
@@ -115,10 +111,6 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "localhost:8000/api/flights/2",
 					"host": [
@@ -133,6 +125,85 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "create user flight",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZW1wLmRldlwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MjY0NTMwMCwiZXhwIjoxNTcyNjQ4OTAwLCJuYmYiOjE1NzI2NDUzMDAsImp0aSI6ImZuMnZDbXphZXFaNTluZmEiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.pGqxRsPDxKwMJ3734CgRg9wfbcmd36ggSZnKbEi7Aus",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"flight_id\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/user/1/flights",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"1",
+						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user's flights",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZW1wLmRldlwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MjY0NTMwMCwiZXhwIjoxNTcyNjQ4OTAwLCJuYmYiOjE1NzI2NDUzMDAsImp0aSI6ImZuMnZDbXphZXFaNTluZmEiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.pGqxRsPDxKwMJ3734CgRg9wfbcmd36ggSZnKbEi7Aus",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/user/1/flights",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"1",
+						"flights"
+					]
+				}
+			},
+			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

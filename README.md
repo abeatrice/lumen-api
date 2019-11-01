@@ -42,4 +42,4 @@
 | POST      | /api/user/{userId}/flights    | assign flight to user             | auth, isOwner |
 | GET       | /api/user/{userId}/flights    | get user's flights                | auth, isOwner |
 | GET       | /api/flights                  | get all flights                   | auth          |
-| GET       | /api/{flight_id}              | get one flight by id              | auth          |
+| GET       | /api/flights/{flightId}       | get one flight by id              | auth          |
