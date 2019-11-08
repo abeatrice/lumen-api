@@ -23,7 +23,7 @@ class FlightTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_not_get_single_flights()
+    public function guest_can_not_get_single_flight()
     {
         $this->get('/api/flights/1')->assertResponseStatus(401);
     }

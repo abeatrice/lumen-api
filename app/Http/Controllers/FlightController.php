@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Flight;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;
 
 class FlightController extends Controller
 {
@@ -22,9 +24,15 @@ class FlightController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(['data' => Flight::all()], 200);
+        $page = $request->has('page') ? $request->get('page') : 1;
+
+        $flights = Cache::remember("flights_page_{$page}", 3600, function () {
+            return Flight::paginate();
+        });
+
+        return response()->json(['data' => $flights], 200);
     }
 
     public function show($flight)
