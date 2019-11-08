@@ -60,4 +60,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->belongsToMany('App\Flight');
     }
+
+    /** 
+     * book many flights
+     * 
+     * @return Void
+    */
+    public function bookMany($flights)
+    {
+        foreach($flights as $flight)
+        {
+            $this->flights()->save($flight);
+        }
+    }
 }

@@ -58,12 +58,12 @@ class FlightUserController extends Controller
 
             $request->user()->flights()->save($flight);
 
-            return response()->json(['message' => 'user flight created'], 201);
+            return response()->json(['created' => true], 201);
 
 
         } catch (\Throwable $th) {
 
-            return response()->json(['message' => 'flight or user not found'], 404); 
+            return response()->json(['message' => 'flight not found'], 404);
 
         }
 
