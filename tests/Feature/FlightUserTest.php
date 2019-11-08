@@ -75,13 +75,18 @@ class FlightUserTest extends TestCase
 
         $user->bookManyFlights($flights = $this->flights->slice(0,2));
         
-        $user->cancelFlight($flights[1]);
-
-        $this->get("api/user/{$user->id}/flights")->assertResponseStatus(200);
-
-        $this->dontSeeJson(['id' => $flights[1]->id]);
+        $this->delete("/api/user/{$user->id}/flights/{$flights[1]->id}")
+            ->assertResponseStatus(204);
         
-        $this->seeJson(['id' => $flights[0]->id]);
+        $this->notSeeInDatabase('flight_user', [
+            'user_id' => $user->id,
+            'flight_id' => $flights[1]->id
+        ]);
+
+        $this->seeInDatabase('flight_user', [
+            'user_id' => $user->id,
+            'flight_id' => $flights[0]->id
+        ]);
     }
 
 }

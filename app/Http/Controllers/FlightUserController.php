@@ -51,7 +51,6 @@ class FlightUserController extends Controller
      */
     public function store(Request $request)
     {
-
         try {
 
             $flight = Flight::findOrFail($request->flight_id);
@@ -67,6 +66,31 @@ class FlightUserController extends Controller
 
         }
 
+    }
+
+    /**
+     * cancel a flight
+     *
+     * @param Flight $flight
+     * @return void
+     */
+    public function delete($userId, $flightId)
+    {
+        try {
+
+            $user = User::findOrFail($userId);
+
+            $flight = Flight::findOrFail($flightId);
+
+            $user->cancelFlight($flight);
+
+            return response()->json(['deleted' => true], 204);
+
+        } catch (\Throwable $th) {
+
+            return response()->json(['message' => 'Not found'], 404);
+
+        }
     }
 
 }

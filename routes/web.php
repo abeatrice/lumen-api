@@ -28,4 +28,5 @@ $router->group(['prefix' => 'api/user'], function() use ($router) {
 
     $router->get('/{userId}/flights', 'FlightUserController@index');
     $router->post('/{userId}/flights', 'FlightUserController@store');
+    $router->delete('/{userId}/flights/{flightId}', 'FlightUserController@delete');
 });
