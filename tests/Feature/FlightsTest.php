@@ -72,14 +72,13 @@ class FlightsTest extends TestCase
     {
         $user = $this->signIn();
 
-        $user->bookMany($this->flights);
+        $user->bookMany($flights = $this->flights->slice(2));
 
-        $this->get("api/user/{$user->id}/flights")
-            ->assertResponseStatus(200);
+        $this->get("api/user/{$user->id}/flights")->assertResponseStatus(200);
 
-        $this->seeJson([
-            'data' => $this->flights->toArray()
-        ]);
+        foreach ($flights as $flight) {
+            $this->seeJson($flight->toArray());
+        }
     }
 
     //user_cannot_get_another_users_flights
