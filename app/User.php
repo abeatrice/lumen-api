@@ -61,16 +61,35 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->belongsToMany('App\Flight');
     }
 
+    /**
+     * book flight
+     *
+     * @param Flight $flight
+     * @return void
+     */
+    public function bookFlight(Flight $flight)
+    {
+        $this->flights()->save($flight);
+    }
+
     /** 
      * book many flights
      * 
      * @return Void
     */
-    public function bookMany($flights)
+    public function bookManyFlights($flights)
     {
-        foreach($flights as $flight)
-        {
-            $this->flights()->save($flight);
-        }
+        $this->flights()->saveMany($flights);
+    }
+
+    /**
+     * cancel flight
+     *
+     * @param Flight $flight
+     * @return Void
+     */
+    public function cancelFlight(Flight $flight)
+    {
+        $this->flights()->detach($flight);
     }
 }

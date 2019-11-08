@@ -33,7 +33,7 @@ class FlightUserTest extends TestCase
     {
         $user = $this->signIn();
 
-        $user->bookMany($flights = $this->flights->slice(2));
+        $user->bookManyFlights($flights = $this->flights->slice(0,2));
 
         $this->get("api/user/{$user->id}/flights")->assertResponseStatus(200);
 
@@ -47,7 +47,7 @@ class FlightUserTest extends TestCase
     {
         $james = $this->signIn();
         
-        $james->bookMany($flights = $this->flights->slice(2));
+        $james->bookManyFlights($flights = $this->flights->slice(0,2));
         
         $john = factory('App\User')->create(); 
         
@@ -66,6 +66,22 @@ class FlightUserTest extends TestCase
         $this->actingAs($james)->post("/api/user/{$john->id}/flights", [
             "flight_id" => $this->flights[0]->id
         ])->assertResponseStatus(401);
+    }
+
+    /** @test */
+    public function user_can_cancel_flight()
+    {
+        $user = $this->signIn();
+
+        $user->bookManyFlights($flights = $this->flights->slice(0,2));
+        
+        $user->cancelFlight($flights[1]);
+
+        $this->get("api/user/{$user->id}/flights")->assertResponseStatus(200);
+
+        $this->dontSeeJson(['id' => $flights[1]->id]);
+        
+        $this->seeJson(['id' => $flights[0]->id]);
     }
 
 }
