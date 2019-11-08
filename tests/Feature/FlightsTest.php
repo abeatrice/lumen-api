@@ -14,7 +14,6 @@ class FlightsTest extends TestCase
         parent::setUp();
         
         $this->flights = factory('App\Flight', 3)->create();
-
     }    
 
     /** @test */
@@ -62,9 +61,7 @@ class FlightsTest extends TestCase
             "flight_id" => $this->flights[0]->id
         ])->assertResponseStatus(201);
 
-        $this->seeJson([
-            'created' => true
-        ]);
+        $this->seeJson(['created' => true]);
     }
     
     /** @test */
@@ -81,7 +78,19 @@ class FlightsTest extends TestCase
         }
     }
 
-    //user_cannot_get_another_users_flights
+    /** @test */
+    public function user_cannot_get_another_users_flights()
+    {
+        $james = $this->signIn();
+        
+        $james->bookMany($flights = $this->flights->slice(2));
+        
+        $john = factory('App\User')->create(); 
+        
+        $this->actingAs($john)->get("api/user/{$james->id}/flights");
+
+        $this->assertResponseStatus(401);
+    }
     
     //auth user cannot create flight for other user
 
