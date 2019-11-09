@@ -75,7 +75,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MjQ4MDA4OSwiZXhwIjoxNTcyNDgzNjg5LCJuYmYiOjE1NzI0ODAwODksImp0aSI6IkVJdG1YV3lFMFRBQlN0U3IiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ._gEr5I4uGg9BgC6AtATUVtWtGJKuFA1Xrgf3mhYX6yo",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MzI2NzI3OCwiZXhwIjoxNTczMjcwODc4LCJuYmYiOjE1NzMyNjcyNzgsImp0aSI6IjVSdHVwajc3QU9ORGRDd20iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.k7_DEjZfIXOafhDSBIJGN7lioJAe-ZsvtCIiemKmyQY",
 							"type": "string"
 						}
 					]
@@ -83,7 +83,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/api/flights",
+					"raw": "localhost:8000/api/flights?departsAfter=2019-10-07&departsBefore=2019-10-09&origin=BUR&destination=SEA&page=1",
 					"host": [
 						"localhost"
 					],
@@ -91,6 +91,28 @@
 					"path": [
 						"api",
 						"flights"
+					],
+					"query": [
+						{
+							"key": "departsAfter",
+							"value": "2019-10-07"
+						},
+						{
+							"key": "departsBefore",
+							"value": "2019-10-09"
+						},
+						{
+							"key": "origin",
+							"value": "BUR"
+						},
+						{
+							"key": "destination",
+							"value": "SEA"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -134,7 +156,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MzA5ODQzNywiZXhwIjoxNTczMTAyMDM3LCJuYmYiOjE1NzMwOTg0MzcsImp0aSI6IlJFQmRjZlUwYUxjMmwxbkEiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.F59meomWubr0W_LamTKNVptHPNNKBeyyK8xS_2bigYg",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MzI2OTA3NywiZXhwIjoxNTczMjcyNjc3LCJuYmYiOjE1NzMyNjkwNzcsImp0aSI6IkF0Q2tjcVhuVThSanUzbG0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.A3ltOHZ1zmy8UIF56hFeKC70ofsQUnz4VeeNohpnWfM",
 							"type": "string"
 						}
 					]
@@ -158,14 +180,14 @@
 			"response": []
 		},
 		{
-			"name": "Assign Flight to User",
+			"name": "Book flight for user",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MzA5ODQzNywiZXhwIjoxNTczMTAyMDM3LCJuYmYiOjE1NzMwOTg0MzcsImp0aSI6IlJFQmRjZlUwYUxjMmwxbkEiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.F59meomWubr0W_LamTKNVptHPNNKBeyyK8xS_2bigYg",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MzI2OTA3NywiZXhwIjoxNTczMjcyNjc3LCJuYmYiOjE1NzMyNjkwNzcsImp0aSI6IkF0Q2tjcVhuVThSanUzbG0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.A3ltOHZ1zmy8UIF56hFeKC70ofsQUnz4VeeNohpnWfM",
 							"type": "string"
 						}
 					]
@@ -181,7 +203,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"flight_id\": 3\n}",
+					"raw": "{\n\t\"flight_id\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -199,6 +221,38 @@
 						"user",
 						"1",
 						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel user's flight",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTU3MzI2OTA3NywiZXhwIjoxNTczMjcyNjc3LCJuYmYiOjE1NzMyNjkwNzcsImp0aSI6IkF0Q2tjcVhuVThSanUzbG0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.A3ltOHZ1zmy8UIF56hFeKC70ofsQUnz4VeeNohpnWfM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/user/1/flights/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"1",
+						"flights",
+						"2"
 					]
 				}
 			},

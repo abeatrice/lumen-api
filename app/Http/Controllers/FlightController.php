@@ -26,15 +26,46 @@ class FlightController extends Controller
      */
     public function index(Request $request)
     {
-        $page = $request->has('page') ? $request->get('page') : 1;
+        $key = "flights";
+        $key .= "_page_{$request->page}";
+        $key .= "_departsAfter_{$request->departsAfter}";
+        $key .= "_departsBefore_{$request->departsBefore}";
+        $key .= "_origin_{$request->origin}";
+        $key .= "_destination_{$request->destination}";
 
-        $flights = Cache::remember("flights_page_{$page}", 3600, function () {
-            return Flight::paginate();
+        $flights = Cache::remember($key, 300, function () use($request) {
+            
+            $query = Flight::orderBy('departs');
+
+            if($request->has('departsAfter')) {
+                $query->where('departs', '>', $request->get('departsAfter'));
+            }
+
+            if($request->has('departsBefore')) {
+                $query->where('departs', '<', $request->get('departsBefore'));
+            }
+
+            if($request->has('origin')) {
+                $query->where('origin', $request->get('origin'));
+            }
+
+            if($request->has('destination')) {
+                $query->where('destination', $request->get('destination'));
+            }
+
+            return $query->paginate();
+
         });
 
         return response()->json(['data' => $flights], 200);
     }
 
+    /**
+     * get single flight
+     *
+     * @param String $flight
+     * @return Response
+     */
     public function show($flight)
     {
         try {
