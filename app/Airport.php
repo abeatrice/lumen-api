@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Flight extends Model 
+class Airport extends Model 
 {
 
     /**
@@ -13,10 +13,5 @@ class Flight extends Model
      * @var array
      */
     protected $guarded = [];
-
-    public function user()
-    {
-        return $this->belongsToMany('App\User');
-    }
 
 }
