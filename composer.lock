@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2981f5a6eeb3a4507ddad039e751847",
+    "content-hash": "9367b25e9ba899d6c20354ca1fcbd29e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2128,6 +2128,46 @@
                 "simple-cache"
             ],
             "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
+            "name": "shipping-docker/vessel",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shipping-docker/vessel.git",
+                "reference": "baf7e0481a48bd04b1bece2cdfa1a82edef64141"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shipping-docker/vessel/zipball/baf7e0481a48bd04b1bece2cdfa1a82edef64141",
+                "reference": "baf7e0481a48bd04b1bece2cdfa1a82edef64141",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vessel\\VesselServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vessel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Fidao",
+                    "email": "fideloper@gmail.com"
+                }
+            ],
+            "description": "Simple Docker dev environments",
+            "time": "2020-01-04T12:32:35+00:00"
         },
         {
             "name": "symfony/console",
