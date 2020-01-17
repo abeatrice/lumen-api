@@ -40,13 +40,13 @@ $ ./vessel test
 
 ### Containers
 
-Start the containers.
+Start the containers. The application will be running on port 80 at localhost.
 
 ```
 $ ./vessel start
 ```
 
-Stop the containers.
+Stop the containers. This stops the application from running.
 
 ```
 $ ./vessel stop
