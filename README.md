@@ -98,5 +98,3 @@ isOwner - requires authenticated user to be the requested resource owner
 | GET       | /api/user/{userId}/flights            | get user's flights                | auth, isOwner |
 | POST      | /api/user/{userId}/flights            | assign flight to user             | auth, isOwner |
 | DELETE    | /api/user/{userId}/flights/{flightId} | cancel user's flight              | auth, isOwner |
-
-?departsAfter=2019-10-07&departsBefore=2019-10-09&origin=BUR&destination=SEA&page=1
