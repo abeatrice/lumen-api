@@ -2,6 +2,14 @@
 
 This is a rest api built with [Lumen](https://lumen.laravel.com/) and developed with docker environment [Vessel](https://vessel.shippingdocker.com/).
 
+### Requirements
+
+```
+git
+docker
+docker-compose
+```
+
 ### Install
 
 Get the source.
