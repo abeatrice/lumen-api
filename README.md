@@ -1,6 +1,6 @@
 # Lumen API
 
-This is a rest api built with [Lumen](https://lumen.laravel.com/) and developed with docker environment [Vessel] (https://vessel.shippingdocker.com/).
+This is a rest api built with [Lumen](https://lumen.laravel.com/) and developed with docker environment [Vessel](https://vessel.shippingdocker.com/).
 
 ### Install
 
@@ -83,10 +83,13 @@ isOwner - requires authenticated user to be the requested resource owner
 
 #### Flights
 
-| Verb      | Endpoint                              | Description                       | Middleware    |
-|:--------- |:------------------------------------- |:--------------------------------- |:------------- |
-| GET       | /api/flights                          | get all flights                   | auth          |
-| GET       | /api/flights/{flightId}               | get one flight by id              | auth          |
+| Verb      | Endpoint                              | Description                       | Middleware    | Query Parameters          |
+|:--------- |:------------------------------------- |:--------------------------------- |:------------- |:--------------------------|
+| GET       | /api/flights                          | get all flights                   | auth          | ?departsAfter=2019-10-07  |
+|           |                                       |                                   |               | ?departsBefore=2019-10-09 |
+|           |                                       |                                   |               | ?origin=BUR               |
+|           |                                       |                                   |               | ?destination=SEA          |
+| GET       | /api/flights/{flightId}               | get one flight by id              | auth          |                           |
 
 #### User Flights
 
@@ -95,3 +98,5 @@ isOwner - requires authenticated user to be the requested resource owner
 | GET       | /api/user/{userId}/flights            | get user's flights                | auth, isOwner |
 | POST      | /api/user/{userId}/flights            | assign flight to user             | auth, isOwner |
 | DELETE    | /api/user/{userId}/flights/{flightId} | cancel user's flight              | auth, isOwner |
+
+?departsAfter=2019-10-07&departsBefore=2019-10-09&origin=BUR&destination=SEA&page=1
